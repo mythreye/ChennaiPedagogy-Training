@@ -18,7 +18,7 @@ public class ReadFromCSV {
 		String username = "root";
 		String password = "P@ssw0rd@11443";
 		Connection connection = null;
-		int i = 1000;
+		int i = 1000, j = 0;
 		try (Stream<String> stream = Files.lines(Paths.get(txtFileName))) {
 			Iterator<String> mydata = stream.iterator();
 			mydata.next();
@@ -28,13 +28,13 @@ public class ReadFromCSV {
 			PreparedStatement statement = connection.prepareStatement(sql);
 			while (mydata.hasNext()) {
 				i++;
+				j++;
 				String[] data = mydata.next().split(",");
 				String date[] = data[0].split("-");
 				Date date1 = new SimpleDateFormat("yyyyddmm").parse(date[0]);
 				String pattern = "yyyy/dd/mm-hh:ss";
 				SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
 				String ndate = simpleDateFormat.format(date1);
-				System.out.println(i);
 				statement.setInt(1, i);
 				statement.setString(2, ndate);
 				statement.setString(3, data[1]);
@@ -50,8 +50,14 @@ public class ReadFromCSV {
 				statement.setString(13, data[11]);
 				statement.setString(14, data[12]);
 				statement.setString(15, "delhi");
-				statement.execute();
+				statement.addBatch();
+				if (j % 5000 == 0) {
+					System.out.println(i);
+					System.out.println(i);
+					statement.executeBatch();
+				}
 			}
+			statement.executeBatch();
 			connection.close();
 			Path temp = Files.move(Paths.get(txtFileName),
 					Paths.get("D:\\Chennai Trainnings\\ques2\\done\\delhi_weather.csv"));
