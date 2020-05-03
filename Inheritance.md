@@ -33,7 +33,7 @@ must provide some mechanism for modeling such relationships.
         .....
         .....
     }
-####   Type of Inheritance
+###   Type of Inheritance
 1)  Single Inheritance.
 2)  MultiLevel Inheritance.
 
@@ -55,8 +55,127 @@ child class of B and B is a child class of A.
 
 ##   Evaluation (Advantage/Disadvantages) 
 ---
+The syntax for creating a subclass is simple. At the beginning of your class declaration, use the extends keyword, followed by the name of the class to inherit from:
+
+    
+    public class Bicycle 
+    {
+        ....
+        ....
+        ....
+    }
+    class RoadBike extends Bicycle 
+    {
+        // new fields and methods defining 
+        // a mountain bike would go here
+    }
+    class HondaShineBike extends RoadBicycle 
+    {
+        // new fields and methods defining 
+        // a mountain bike would go here
+    }
+
+
+
+These words would determine whether one object IS-A type of another. By using these keywords we can make one object acquire the properties of another object.
+
+#### IS-A Relationship:
+IS-A is a way of saying : This object is a type of that object. Let us see how the extends keyword is used to achieve inheritance.
+
+Now based on the above example, In Object Oriented terms following are true:
+
+Bicycle is the superclass of RoadBike class.
+RoadBike is the superclass of HondaShineBike class.
+HondaShineBike is a subclass of RoadBike therfore it is a subclass of BicycleWe
+
+Now if we consider the IS-A relationship we can say:
+
+RoadBike IS-A Bicycle
+HondaShineBike IS-A RoadBike
+Hence : HondaShineBike IS-A Bicycle as well
+
+
 ##  Demo of the solution 
 ---
+Java program to illustrate the  concept of inheritance 
+    
+    public class Bicycle 
+    {
+        // the Bicycle class has two fields 
+    public int gear; 
+    public int speed; 
+          
+    // the Bicycle class has one constructor 
+    public Bicycle(int gear, int speed) 
+    { 
+        this.gear = gear; 
+        this.speed = speed; 
+    } 
+          
+    // the Bicycle class has three methods 
+    public void applyBrake(int decrement) 
+    { 
+        speed -= decrement; 
+    } 
+          
+    public void speedUp(int increment) 
+    { 
+        speed += increment; 
+    } 
+      
+    // toString() method to print info of Bicycle 
+    public String toString()  
+    { 
+        return("No of gears are "+gear 
+                +"\n"
+                + "speed of bicycle is "+speed); 
+    } 
+    }
+    class MountainBike  extends Bicycle 
+    {
+         // the MountainBike subclass adds one more field 
+    public int seatHeight; 
+  
+    // the MountainBike subclass has one constructor 
+    public MountainBike(int gear,int speed, 
+                        int startHeight) 
+    { 
+        // invoking base-class(Bicycle) constructor 
+        super(gear, speed); 
+        seatHeight = startHeight; 
+    }  
+          
+    // the MountainBike subclass adds one more method 
+    public void setHeight(int newValue) 
+    { 
+        seatHeight = newValue; 
+    }  
+      
+    // overriding toString() method 
+    // of Bicycle to print more info 
+    @Override
+    public String toString() 
+    { 
+        return (super.toString()+ 
+                "\nseat height is "+seatHeight); 
+    } 
+      
+    }
+    public class Test  
+    { 
+    public static void main(String args[])  
+    { 
+          
+        MountainBike mb = new MountainBike(3, 100, 25); 
+        System.out.println(mb.toString()); 
+              
+    } 
+}
+
+### Output:
+    No of gears are 3
+    speed of bicycle is 100
+    seat height is 25
 ## Reference Materials
 ---
 
