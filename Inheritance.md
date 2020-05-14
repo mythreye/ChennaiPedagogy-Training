@@ -3,36 +3,19 @@
 ##  Introduction
 ---
 It is always nice if we could reuse something that already exists rather than creating the same all over again and again. Java supports this concept. Java classes can be reused in several ways. This is basically done by creating new classes, reusing the properties of existing ones. The mechanism of deriving a new class from an old one is called Inheritance.
-
 ## Background Information
 ---
 Inheritance can be defined as the process where one class acquires the properties methods and fields
 of another. The class which inherits the properties of other is known as subclass derivedclass, childclass and the class whose properties are inherited is known as superclass baseclass, parentclass. The idea behind inheritance is that you can create new classes that are built upon existing classes. When you
 inherit from an existing class, you can reuse methods and fields of parent class and you can add new methods and
 fields also. Inheritance represents the IS-A relationship, also known as parent-child relationship.
-
 ## Problem Statement
 ---
 One of the aims of object-oriented programming is to simplify the process of building software models of
 real-world objects. Since real-world objects may be related to one another, an object-oriented language
 must provide some mechanism for modeling such relationships.
+## Description of Problem Statement 
 
-##    Possible Technique 
----
- 'extends' is the keyword used to inherit the properties of a class.
-
-    Sample Code:
-
-    class Super
-    {
-        .....
-        .....
-    }
-    class Sub extends Super
-    {
-        .....
-        .....
-    }
 ###   Type of Inheritance
 1)  Single Inheritance.
 2)  MultiLevel Inheritance.
@@ -52,8 +35,23 @@ class. As you can see in below flow diagram C is subclass or
 child class of B and B is a child class of A.
 
 ![alt](https://www.guru99.com/images/java/multilevel.png)
+## Possible Technique to resolve the Problem
+---
+ 'extends' is the keyword used to inherit the properties of a class.
 
-##   Evaluation (Advantage/Disadvantages) 
+    Sample Code:
+
+    class Super
+    {
+        .....
+        .....
+    }
+    class Sub extends Super
+    {
+        .....
+        .....
+    }
+## Evaluation (Advantage/Disadvantages) 
 ---
 The syntax for creating a subclass is simple. At the beginning of your class declaration, use the extends keyword, followed by the name of the class to inherit from:
 
@@ -94,8 +92,11 @@ RoadBike IS-A Bicycle
 HondaShineBike IS-A RoadBike
 Hence : HondaShineBike IS-A Bicycle as well
 
-
-##  Demo of the solution 
+### Super Keyword:
+1)   Super keyword can be used to refer immediate parent class instance variable.
+2)   Super keyword can be used to invoke immediate parent class method.
+3)   Super() can be used to invoke immediate parent class Constructor.
+## Demo of the solution 
 ---
 Java program to illustrate the  concept of inheritance 
     
@@ -166,6 +167,8 @@ Java program to illustrate the  concept of inheritance
     No of gears are 3
     speed of bicycle is 100
     seat height is 25
+## FAQ
+---
 ## Reference Materials
 ---
 
